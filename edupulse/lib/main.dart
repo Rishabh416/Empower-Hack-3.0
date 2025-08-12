@@ -1,3 +1,7 @@
+import 'package:edupulse/HomePage.dart';
+import 'package:edupulse/libraryPage.dart';
+import 'package:edupulse/liveLessonPage.dart';
+import 'package:edupulse/profilePage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
