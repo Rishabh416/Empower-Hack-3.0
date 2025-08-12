@@ -11,6 +11,25 @@ class AudioProcessing {
   List<int> decodedBits = [];
   List<double> buffer = [];
 
+  Map<int, String> byteMap = {
+    // Numbers 0-9
+    for (int i = 48; i <= 57; i++) i: String.fromCharCode(i),
+
+    // Uppercase letters A-Z
+    for (int i = 65; i <= 90; i++) i: String.fromCharCode(i),
+
+    // Lowercase letters a-z
+    for (int i = 97; i <= 122; i++) i: String.fromCharCode(i),
+
+    // Common symbols (space, punctuation, etc)
+    32: ' ', 33: '!', 34: '"', 35: '#', 36: r'$', 37: '%', 38: '&',
+    39: "'", 40: '(', 41: ')', 42: '*', 43: '+', 44: ',', 45: '-',
+    46: '.', 47: '/', 58: ':', 59: ';', 60: '<', 61: '=', 62: '>',
+    63: '?', 64: '@', 91: '[', 92: r'\\', 93: ']', 94: '^', 95: '_',
+    96: '`', 123: '{', 124: '|', 125: '}', 126: '~',
+  };
+
+
   double goertzel(List<double> samples, int sampleRate, double targetFreq) {
     int n = samples.length;
     double s_prev = 0.0;
@@ -94,6 +113,15 @@ class AudioProcessing {
         List<int> crc = frameBytes.sublist(32, 34);      
         print("🔵");
         print(payload);
+
+        for (int byte in payload) {
+          if (byteMap.containsKey(byte)) {
+            print("Decoded byte: ${byteMap[byte]}");
+          } else {
+            print("Unknown byte: $byte");
+          }
+        }
+
       } else {
         print("Not enough bits");
       }
