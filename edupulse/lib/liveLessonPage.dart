@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:edupulse/audioProcessing.dart';
 import 'package:flutter/material.dart';
 import 'package:audio_streamer/audio_streamer.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -30,13 +31,17 @@ class _LiveLessonPageState extends State<LiveLessonPage> {
       await Permission.microphone.request();
 
   /// Call-back on audio sample.
+  
+  AudioProcessing audioProcessing = AudioProcessing();
   void onAudio(List<double> buffer) async {
     audio.addAll(buffer);
 
     // Get the actual sampling rate, if not already known.
     sampleRate ??= await AudioStreamer().actualSampleRate;
     recordingTime = audio.length / sampleRate!;
-
+    print(latestBuffer?.length);
+    audioProcessing.processBuffer(latestBuffer);
+    
     setState(() => latestBuffer = buffer);
   }
 
@@ -48,20 +53,15 @@ class _LiveLessonPageState extends State<LiveLessonPage> {
 
   /// Start audio sampling.
   void start() async {
-    // Check permission to use the microphone.
-    //
-    // Remember to update the AndroidManifest file (Android) and the
-    // Info.plist and pod files (iOS).
     if (!(await checkPermission())) {
       await requestPermission();
     }
 
     // Set the sampling rate - works only on Android.
-    AudioStreamer().sampleRate = 22100;
+    AudioStreamer().sampleRate = 44100;
 
     // Start listening to the audio stream.
-    audioSubscription =
-        AudioStreamer().audioStream.listen(onAudio, onError: handleError);
+    audioSubscription = AudioStreamer().audioStream.listen(onAudio, onError: handleError);
 
     setState(() => isRecording = true);
   }
