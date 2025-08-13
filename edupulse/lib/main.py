@@ -16,8 +16,72 @@ bitstream = [
   0, 1, 1, 1, 0, 1, 0, 1,  # next byte
   0, 1, 1, 0, 0, 1, 0, 1,  # next byte
   0, 1, 1, 1, 0, 0, 1, 1,  # next byte
-  0, 1, 1, 0, 0, 1, 0, 1,  # next byte
+  0, 1, 1, 1, 0, 1, 0, 0,  # next byte
+  0, 1, 1, 0, 1, 0, 0, 1,  # next byte
+  0, 1, 1, 0, 1, 1, 1, 1,  # next byte
+  0, 1, 1, 0, 1, 1, 1, 0,  # next byte
+  0, 0, 1, 0, 0, 0, 1, 0,  # next byte
+  0, 0, 1, 1, 1, 0, 1, 0,  # next byte
+  0, 0, 1, 0, 0, 0, 0, 0,  # next byte
+  0, 0, 1, 0, 0, 0, 1, 0,  # next byte
+  0, 1, 0, 1, 0, 1, 1, 1,  # next byte
+  0, 1, 1, 0, 1, 0, 0, 0,  # next byte
+  0, 1, 1, 0, 0, 0, 0, 1,  # next byte
+  0, 1, 1, 1, 0, 1, 0, 0,  # next byte
+  0, 0, 1, 0, 0, 0, 0, 0,  # next byte
+  0, 1, 1, 0, 1, 0, 0, 1,  # next byte
   0, 1, 1, 1, 0, 0, 1, 1,  # next byte
+  0, 0, 1, 0, 0, 0, 0, 0,  # next byte
+  0, 1, 1, 1, 0, 1, 0, 0,  # next byte
+  0, 1, 1, 0, 1, 0, 0, 0,  # next byte
+  0, 1, 1, 0, 0, 1, 0, 1,  # next byte
+  0, 0, 1, 0, 0, 0, 0, 0,  # next byte
+  0, 1, 1, 0, 1, 1, 1, 0,  # next byte
+  0, 1, 1, 0, 0, 0, 0, 1,  # next byte
+  0, 1, 1, 0, 1, 1, 0, 1,  # next byte
+  0, 1, 1, 0, 0, 1, 0, 1,  # next byte
+  0, 0, 1, 0, 0, 0, 0, 0,  # next byte
+  0, 1, 1, 0, 1, 1, 1, 1,  # next byte
+  0, 1, 1, 0, 0, 1, 1, 0,  # next byte
+  0, 0, 1, 0, 0, 0, 0, 0,  # next byte
+  0, 1, 1, 1, 0, 1, 0, 0,  # next byte
+  0, 1, 1, 0, 1, 0, 0, 0,  # next byte
+  0, 1, 1, 0, 0, 1, 0, 1,  # next byte
+  0, 0, 1, 0, 0, 0, 0, 0,  # next byte
+  0, 0, 1, 1, 0, 1, 0, 1,  # next byte
+  0, 1, 1, 1, 0, 1, 0, 0,  # next byte
+  0, 1, 1, 0, 1, 0, 0, 0,  # next byte
+  0, 0, 1, 0, 0, 0, 0, 0,  # next byte
+  0, 1, 1, 1, 0, 0, 0, 0,  # next byte
+  0, 1, 1, 0, 1, 1, 0, 0,  # next byte
+  0, 1, 1, 0, 0, 0, 0, 1,  # next byte
+  0, 1, 1, 0, 1, 1, 1, 0,  # next byte
+  0, 1, 1, 0, 0, 1, 0, 1,  # next byte
+  0, 1, 1, 1, 0, 1, 0, 0,  # next byte
+  0, 0, 1, 0, 0, 0, 0, 0,  # next byte
+  0, 1, 1, 0, 1, 0, 0, 1,  # next byte
+  0, 1, 1, 0, 1, 1, 1, 0,  # next byte
+  0, 0, 1, 0, 0, 0, 0, 0,  # next byte
+  0, 1, 1, 1, 0, 1, 0, 0,  # next byte
+  0, 1, 1, 0, 1, 0, 0, 0,  # next byte
+  0, 1, 1, 0, 0, 1, 0, 1,  # next byte
+  0, 0, 1, 0, 0, 0, 0, 0,  # next byte
+  0, 1, 1, 1, 0, 0, 1, 1,  # next byte
+  0, 1, 1, 0, 1, 1, 1, 1,  # next byte
+  0, 1, 1, 0, 1, 1, 0, 0,  # next byte
+  0, 1, 1, 0, 0, 0, 0, 1,  # next byte
+  0, 1, 1, 1, 0, 0, 1, 0,  # next byte
+  0, 0, 1, 0, 0, 0, 0, 0,  # next byte
+  0, 1, 1, 1, 0, 0, 1, 1,  # next byte
+  0, 1, 1, 1, 1, 0, 0, 1,  # next byte
+  0, 1, 1, 1, 0, 0, 1, 1,  # next byte
+  0, 1, 1, 1, 0, 1, 0, 0,  # next byte
+  0, 1, 1, 0, 0, 1, 0, 1,  # next byte
+  0, 1, 1, 0, 1, 1, 0, 1,  # next byte
+  0, 0, 1, 0, 0, 0, 1, 0,  # next byte
+  0, 1, 1, 1, 1, 1, 0, 1,  # next byte
+  0, 0, 1, 0, 0, 0, 1, 0,  # next byte
+  0, 1, 1, 1, 1, 1, 0, 1,  # next byte
   ]
 
 

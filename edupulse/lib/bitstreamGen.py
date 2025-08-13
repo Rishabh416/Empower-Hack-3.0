@@ -40,11 +40,7 @@ def string_to_bitstream(s):
 if __name__ == "__main__":
     import json
 
-    json_data = {
-    "question": "What is the name of the 5th planet in the solar system",
-    "options": ["Earth", "Venus", "Mars", "Jupiter"],
-    "correct": "3"
-    }
+    json_data = {"question": "What is the name of the 5th planet in the solar system"}
 
     json_str = json.dumps(json_data)
     bits = string_to_bitstream(json_str)
