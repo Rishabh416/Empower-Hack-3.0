@@ -1,13 +1,14 @@
 import 'dart:math';
 
 class AudioProcessing {
+  // No windowing for better symbol alignment
   // Constructor
   AudioProcessing();
 
   final int sampleRate = 44100;
-  final int symbolSamples = 441; // 10ms per symbol
-  final double f0 = 1200; 
-  final double f1 = 2200; 
+  final int symbolSamples = 1764; // 10ms per symbol (44100 * 0.01)
+  final double f0 = 8000; // FSK 0 frequency
+  final double f1 = 10000; // FSK 1 frequency
   List<int> decodedBits = [];
   List<double> buffer = [];
 
@@ -80,6 +81,7 @@ class AudioProcessing {
     for (int i = 0; i < bits.length - 15; i++) {  // 16 bits preamble length
       if (checkPreamble(bits, i)) {
         print("🟢");
+        print(bits);
         return i;  // Found preamble starting at index i
       }
     }
@@ -89,7 +91,7 @@ class AudioProcessing {
   void processBuffer(List<double>? newSamples) {
     if (newSamples == null) return; // Prevents null errors
     buffer.addAll(newSamples);
-
+    print("🟣");
     while (buffer.length >= symbolSamples) {
       List<double> symbolChunk = buffer.sublist(0, symbolSamples);
       buffer = buffer.sublist(symbolSamples);
@@ -99,18 +101,18 @@ class AudioProcessing {
 
       int bit = mag1 > mag0 ? 1 : 0;
       decodedBits.add(bit);
-      print(decodedBits);
     }
+    print(decodedBits);
     
     if (findPreambleIndex(decodedBits) != -1) {
       int payloadStartIndex = findPreambleIndex(decodedBits) + 16;
-      int bitsToExtract = 256 + 16;  // payload + crc
+      int bitsToExtract = 1080 + 16;  // payload + crc
 
       if (payloadStartIndex + bitsToExtract <= decodedBits.length) {
         List<int> frameBits = decodedBits.sublist(payloadStartIndex, payloadStartIndex + bitsToExtract);
         List<int> frameBytes = bitsToBytes(frameBits);
-        List<int> payload = frameBytes.sublist(0, 32);  
-        List<int> crc = frameBytes.sublist(32, 34);      
+        List<int> payload = frameBytes.sublist(0, 135);  
+        List<int> crc = frameBytes.sublist(135, 137);      
         print("🔵");
         print(payload);
 
