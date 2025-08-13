@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:edupulse/audioProcessing.dart';
+import 'package:edupulse/waveformpainter.dart';
 import 'package:flutter/material.dart';
 import 'package:audio_streamer/audio_streamer.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -22,6 +23,8 @@ class _LiveLessonPageState extends State<LiveLessonPage> {
   List<double>? latestBuffer;
   double? recordingTime;
   StreamSubscription<List<double>>? audioSubscription;
+
+  List<double> waveform = [];
 
 
   /// Check if microphone permission is granted.
@@ -66,6 +69,7 @@ class _LiveLessonPageState extends State<LiveLessonPage> {
     }
     audio.addAll(buffer);
     recordingTime = audio.length / sampleRate!;
+    waveform = buffer;
     setState(() => latestBuffer = buffer);
   }
 
@@ -113,6 +117,14 @@ class _LiveLessonPageState extends State<LiveLessonPage> {
                         margin: EdgeInsets.only(top: 20),
                       ),
                       Text(''),
+                      SizedBox(
+                        height: 100,
+                        child: CustomPaint(
+                          painter: SpectrumPainter(latestBuffer ?? [], color: Colors.green),
+                          size: Size(double.infinity, 100),
+                        ),
+                      ),
+
                       // Text('Max amp: ${latestBuffer?.reduce(max)}'),
                       // Text('Min amp: ${latestBuffer?.reduce(min)}'),
                       Text(

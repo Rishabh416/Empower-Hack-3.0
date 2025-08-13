@@ -106,13 +106,13 @@ class AudioProcessing {
     
     if (findPreambleIndex(decodedBits) != -1) {
       int payloadStartIndex = findPreambleIndex(decodedBits) + 16;
-      int bitsToExtract = 1080 + 16;  // payload + crc
+      int bitsToExtract = 48 + 16;  // payload + crc
 
       if (payloadStartIndex + bitsToExtract <= decodedBits.length) {
         List<int> frameBits = decodedBits.sublist(payloadStartIndex, payloadStartIndex + bitsToExtract);
         List<int> frameBytes = bitsToBytes(frameBits);
-        List<int> payload = frameBytes.sublist(0, 135);  
-        List<int> crc = frameBytes.sublist(135, 137);      
+        List<int> payload = frameBytes.sublist(0, 6);  
+        List<int> crc = frameBytes.sublist(7, 8);      
         print("🔵");
         print(payload);
 

@@ -37,6 +37,8 @@ dependencies:
   audio_streamer: ^4.2.2
   permission_handler: ^11.4.0
   iirjdart: ^0.1.0
+  scidart: ^0.0.2-dev.12
+  fftea: ^1.5.0+1
 
 dev_dependencies:
   flutter_test:
