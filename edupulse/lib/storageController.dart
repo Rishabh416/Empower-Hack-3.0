@@ -86,5 +86,10 @@ class StorageController {
     }
   }
 
+  Future<String> getImgContent(String folder) async {
+    final dir = await getApplicationDocumentsDirectory();
+    final folderPath = '${dir.path}/$folder';
+    return folderPath;
+  }
 
 }
