@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:edupulse/liveLessonPage.dart';
+
 class AudioProcessing {
   // No windowing for better symbol alignment
   // Constructor
@@ -9,8 +11,10 @@ class AudioProcessing {
   final int symbolSamples = 1764; // 10ms per symbol (44100 * 0.01)
   final double f0 = 8000; // FSK 0 frequency
   final double f1 = 10000; // FSK 1 frequency
+  final int numBytes = 70; // Number of bytes in the payload
   List<int> decodedBits = [];
   List<double> buffer = [];
+  List<String> decodedPayload = [];
 
   Map<int, String> byteMap = {
     // Numbers 0-9
@@ -106,27 +110,33 @@ class AudioProcessing {
     
     if (findPreambleIndex(decodedBits) != -1) {
       int payloadStartIndex = findPreambleIndex(decodedBits) + 16;
-      int bitsToExtract = 560 + 16;  // payload + crc
+      int bitsToExtract = 8 * numBytes;  // payload + crc
 
       if (payloadStartIndex + bitsToExtract <= decodedBits.length) {
         List<int> frameBits = decodedBits.sublist(payloadStartIndex, payloadStartIndex + bitsToExtract);
         List<int> frameBytes = bitsToBytes(frameBits);
-        List<int> payload = frameBytes.sublist(0, 70);  
-        List<int> crc = frameBytes.sublist(71, 72);      
+        List<int> payload = frameBytes.sublist(0, numBytes);
         print("🔵");
         print(payload);
 
         for (int byte in payload) {
           if (byteMap.containsKey(byte)) {
+            decodedPayload.add(byteMap[byte]!);
             print("Decoded byte: ${byteMap[byte]}");
           } else {
             print("Unknown byte: $byte");
           }
         }
 
+        print("Decoded payload: $decodedPayload");
+
+
       } else {
         print("Not enough bits");
       }
     }
+
+    buffer = [];  // Clear buffer after processing
+    decodedBits = [];
   }
 }

@@ -3,9 +3,12 @@ import 'package:edupulse/libraryPage.dart';
 import 'package:edupulse/liveLessonPage.dart';
 import 'package:edupulse/profilePage.dart';
 import 'package:flutter/material.dart';
+import 'package:edupulse/supabaseController.dart';
 
 void main() {
   runApp(const MyApp());
+  final SupabaseController supabase = SupabaseController();
+  supabase.initialize();
 }
 
 class MyApp extends StatelessWidget {
@@ -36,7 +39,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = [
     const HomePage(),
     const LiveLessonPage(),
-    const LibraryPage(),
+    LibraryPage(),
     const ProfilePage(),
   ];
 

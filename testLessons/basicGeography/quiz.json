@@ -1,0 +1,37 @@
+[
+  {
+    "q": "How many continents are there on Earth?",
+    "a": "5",
+    "a": "6",
+    "A": "7",
+    "a": "8"
+  },
+  {
+    "q": "Which is the largest continent?",
+    "A": "Asia",
+    "a": "Africa",
+    "a": "North America",
+    "a": "Europe"
+  },
+  {
+    "q": "Which is the smallest continent?",
+    "a": "Antarctica",
+    "a": "Europe",
+    "A": "Australia",
+    "a": "South America"
+  },
+  {
+    "q": "Which covers most of the Earth’s surface?",
+    "a": "Land",
+    "A": "Water",
+    "a": "Mountains",
+    "a": "Forests"
+  },
+  {
+    "q": "What is the coldest continent?",
+    "a": "Asia",
+    "a": "North America",
+    "A": "Antarctica",
+    "a": "Europe"
+  }
+]
